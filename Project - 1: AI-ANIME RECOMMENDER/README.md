@@ -417,57 +417,64 @@ chmod 700 get_helm.sh
 
 ## To create a Grafana Cloud account with GitHub or anything
 
-``
-#### Come to grafana cloud --> Left pane observability --> Kubernetes--> start sending data
-#### In backend installation --> Hit install
-#### Give your clustername and namespace there : minikube and monitoring in our case
-#### Select kubernetes
-#### Keep other things on as default
-#### Here only create new access token give name lets give minikube-token & Create it and save it somewhere..
-#### Select helm and deploy helm charts is already generated...
+```
+Come to grafana cloud --> Left pane observability --> Kubernetes--> start sending data
+In backend installation --> Hit install
+Give your clustername and namespace there : minikube and monitoring in our case
+Select kubernetes
+Keep other things on as default
+Here only create new access token give name lets give minikube-token & Create it and save it somewhere..
+Select helm and deploy helm charts is already generated...
 ```
 
-SSH to VM
+**SSH to VM**
 
 ```
 vi values.yaml
 
-//You can copy this code from Grafana Cloud > Deployment to copy section
-#### Paste all from there to your file now remove last EOF part & and also initial part save that initial part we need it..
-Example : 
+You can copy this code from Grafana Cloud > Deployment to copy section
+Paste all from there to your file now remove last EOF part & and also initial part save that initial part we need it..
+```
 
+**Example :**
+
+```
 helm repo add grafana https://grafana.github.io/helm-charts &&
   helm repo update &&
   helm upgrade --install --atomic --timeout 300s grafana-k8s-monitoring grafana/k8s-monitoring \
     --namespace "monitoring" --create-namespace --values - <<'EOF'
+```
 
-#### Remove this above intial part and save it somewhere
-
+Remove this above intial part and save it somewhere
 Then Esc+wq! amd save the file
 
-## Now use the copied command just make some modification:
+Now use the copied command just make some modification:
 Remove that EOF part and instead write
 --values values.yaml
 
 **Example:**
+
+```
 helm repo add grafana https://grafana.github.io/helm-charts &&
   helm repo update &&
   helm upgrade --install --atomic --timeout 300s grafana-k8s-monitoring grafana/k8s-monitoring \
     --namespace "monitoring" --create-namespace --values values.yaml
+```
 
-#### Paste this command on VM u will get status deployed revision 1
-#### It means it was a SUCESS
+Paste this command on VM u will get status deployed revision 1
+It means it was a SUCESS
 
-To check:
+**To check:**
 
+```
 kubectl get pods -n monitoring
+```
 
-//These are all should be running.....
+These are all should be running.....
 
 Go to grafana cloud again..
 And below u will get go to homepage click it..
 Just refresh the page and boom..
-```
 
 
 <img width="757" height="332" alt="image" src="https://github.com/user-attachments/assets/08a66920-c588-4570-8483-d1cb38a7af03" />
