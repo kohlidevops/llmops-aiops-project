@@ -201,7 +201,7 @@ To create .gitignore file in the root directory to add the content that you dont
 https://github.com/kohlidevops/ANIME-RECOMMENDER-SYSTEM-LLMOPS/blob/main/.gitignore
 ```
 
-To push the code to the GitHub repo
+**To push the code to the GitHub repo**
 
 To create a repo named "ANIME-RECOMMENDER-SYSTEM-LLMOPS" in GitHub
 
@@ -216,7 +216,7 @@ To create a repo named "ANIME-RECOMMENDER-SYSTEM-LLMOPS" in GitHub
 <img width="856" height="446" alt="image" src="https://github.com/user-attachments/assets/12e7077e-c387-4d0e-b4a0-c16841ef087e" />
 
 
-To create a VM in GCP
+## To create a VM in GCP
 
 ```
 VM > Create a new VM
@@ -232,13 +232,13 @@ IP forwarding > Enable
 Rest of things > Default and Create a VM
 ```
 
-To SSH to machine and install docker
+**To SSH to machine and install docker**
 
 ```
 https://docs.docker.com/engine/install/ubuntu/
 ```
 
-SSH and install
+**SSH and install**
 
 ```
 # Add Docker's official GPG key:
@@ -269,13 +269,13 @@ sudo systemctl enable containerd.service
 <img width="635" height="263" alt="image" src="https://github.com/user-attachments/assets/435ca01e-75f5-47c2-8c18-51ea3d6edcee" />
 
 
-To install MiniKube on the GCP VM
+## To install MiniKube on the GCP VM
 
 ```
 https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download
 ```
 
-SSH and install minikube
+**SSH and install minikube**
 
 ```
 OS > Linux
@@ -292,13 +292,13 @@ minikube start
 <img width="775" height="233" alt="image" src="https://github.com/user-attachments/assets/d64ae82c-e415-4f89-a364-16d3f5d80f75" />
 
 
-To install kubectl
+**To install kubectl**
 
 ```
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ```
 
-SSH and install kubectl
+**SSH and install kubectl**
 
 ```
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -310,7 +310,8 @@ kubectl version --client
 
 <img width="803" height="153" alt="image" src="https://github.com/user-attachments/assets/f0c8052a-fb44-4e57-8ab2-f30bc1f3ca28" />
 
-To GitHub integration with VM
+
+## To GitHub integration with VM
 
 ```
 git clone https://github.com/kohlidevops/ANIME-RECOMMENDER-SYSTEM-LLMOPS.git
@@ -327,7 +328,7 @@ git push origin main
 <img width="771" height="364" alt="image" src="https://github.com/user-attachments/assets/e0fdc006-8d18-4422-8b6b-9dd8d0b772e5" />
 
 
-To create a Firewall rule in GCP
+## To create a Firewall rule in GCP
 
 ```
 Firewall > Create a new Firewall Rule
@@ -347,7 +348,7 @@ Then create
 <img width="609" height="377" alt="image" src="https://github.com/user-attachments/assets/328430a5-8f81-4159-acfe-373a7c673403" />
 
 
-To Build and Deploy your App on VM
+**To Build and Deploy your App on VM**
 
 ```
 cd ANIME-RECOMMENDER-SYSTEM-LLMOPS
@@ -383,9 +384,9 @@ kubectl port-forward svc/llmops-service 8501:80 --address 0.0.0.0
 <img width="778" height="432" alt="image" src="https://github.com/user-attachments/assets/28cf628d-4f21-490e-ac16-1dd9696a2d47" />
 
 
-Monitoring Kubernetes using Grafana Cloud
+## Monitoring Kubernetes using Grafana Cloud
 
-Create namespace and install Helm on VM with the help of new terminal as already being used other terminals
+**Create namespace and install Helm on VM with the help of new terminal as already being used other terminals**
 
 ```
 kubectl create ns monitoring
@@ -396,13 +397,13 @@ kubectl get ns
 <img width="638" height="138" alt="image" src="https://github.com/user-attachments/assets/2e23b50d-0e16-47fc-ae2b-70b79f0206cd" />
 
 
-Install Helm
+**Install Helm**
 
 ```
 https://helm.sh/docs/intro/install/
 ```
 
-SSH and install Helm
+**SSH and install Helm**
 
 ```
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -414,16 +415,16 @@ chmod 700 get_helm.sh
 <img width="881" height="163" alt="image" src="https://github.com/user-attachments/assets/aeac54da-f85d-441b-b882-4dfcf3885be6" />
 
 
-To create a Grafana Cloud account with GitHub or anything
+## To create a Grafana Cloud account with GitHub or anything
 
 ``
-## Come to grafana cloud --> Left pane observability --> Kubernetes--> start sending data
-## In backend installation --> Hit install
-## Give your clustername and namespace there : minikube and monitoring in our case
-## Select kubernetes
-## Keep other things on as default
-## Here only create new access token give name lets give minikube-token & Create it and save it somewhere..
-## Select helm and deploy helm charts is already generated...
+#### Come to grafana cloud --> Left pane observability --> Kubernetes--> start sending data
+#### In backend installation --> Hit install
+#### Give your clustername and namespace there : minikube and monitoring in our case
+#### Select kubernetes
+#### Keep other things on as default
+#### Here only create new access token give name lets give minikube-token & Create it and save it somewhere..
+#### Select helm and deploy helm charts is already generated...
 ```
 
 SSH to VM
@@ -432,7 +433,7 @@ SSH to VM
 vi values.yaml
 
 //You can copy this code from Grafana Cloud > Deployment to copy section
-## Paste all from there to your file now remove last EOF part & and also initial part save that initial part we need it..
+#### Paste all from there to your file now remove last EOF part & and also initial part save that initial part we need it..
 Example : 
 
 helm repo add grafana https://grafana.github.io/helm-charts &&
@@ -440,7 +441,7 @@ helm repo add grafana https://grafana.github.io/helm-charts &&
   helm upgrade --install --atomic --timeout 300s grafana-k8s-monitoring grafana/k8s-monitoring \
     --namespace "monitoring" --create-namespace --values - <<'EOF'
 
-### Remove this above intial part and save it somewhere
+#### Remove this above intial part and save it somewhere
 
 Then Esc+wq! amd save the file
 
@@ -448,21 +449,20 @@ Then Esc+wq! amd save the file
 Remove that EOF part and instead write
 --values values.yaml
 
-Example:
-
+**Example:**
 helm repo add grafana https://grafana.github.io/helm-charts &&
   helm repo update &&
   helm upgrade --install --atomic --timeout 300s grafana-k8s-monitoring grafana/k8s-monitoring \
     --namespace "monitoring" --create-namespace --values values.yaml
 
-## Paste this command on VM u will get status deployed revision 1
-## It means it was a SUCESS
+#### Paste this command on VM u will get status deployed revision 1
+#### It means it was a SUCESS
 
 To check:
 
 kubectl get pods -n monitoring
 
-# These are all should be running.....
+//These are all should be running.....
 
 Go to grafana cloud again..
 And below u will get go to homepage click it..
@@ -491,7 +491,7 @@ You can play with multiple option that Grafan cloud has
 <img width="928" height="275" alt="image" src="https://github.com/user-attachments/assets/bf662046-5153-45df-a193-ddb0b6af5beb" />
 
 
-Clean up
+## Clean up
 
 ```
 To delete the VM
