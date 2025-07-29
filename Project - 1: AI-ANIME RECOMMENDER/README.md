@@ -41,7 +41,8 @@ https://huggingface.co/settings/tokens
 .env file
 
 ```
-
+GROQ_API_KEY="aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbb"
+HUGGINGFACEHUB_API_TOKEN="aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbb"
 ```
 
 To create a folder named data in the root directory
